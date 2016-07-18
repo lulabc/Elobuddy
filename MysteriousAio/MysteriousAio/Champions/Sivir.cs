@@ -32,7 +32,7 @@ namespace LuckyAio.Champions
         {
             if (W.IsReady() && UseW && target != null)
             {
-                if ((Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo) && !Orbwalker.GotAutoAttackReset && target.Distance(ObjectManager.Player.ServerPosition) <= ObjectManager.Player.AttackRange && (target is AIHeroClient)) || (isClear == true && getSliderItem(LaneClearMenu, "mana") <= Player.Instance.ManaPercent) && (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear) || Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear)))
+                if ((Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo) && target.Distance(ObjectManager.Player.ServerPosition) <= ObjectManager.Player.AttackRange && (target is AIHeroClient)) || (isClear == true && getSliderItem(LaneClearMenu, "mana") <= Player.Instance.ManaPercent) && (Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.LaneClear) || Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.JungleClear)))
                 {
                     W.Cast();
                 }
