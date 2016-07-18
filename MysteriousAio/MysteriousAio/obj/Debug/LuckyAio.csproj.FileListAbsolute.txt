@@ -1,0 +1,13 @@
+C:\Users\samuel\Desktop\LuckyAio\LuckyAio\bin\Debug\LuckyAio.exe.config
+C:\Users\samuel\Desktop\LuckyAio\LuckyAio\bin\Debug\LuckyAio.exe
+C:\Users\samuel\Desktop\LuckyAio\LuckyAio\bin\Debug\LuckyAio.pdb
+C:\Users\samuel\Desktop\LuckyAio\LuckyAio\bin\Debug\EloBuddy.dll
+C:\Users\samuel\Desktop\LuckyAio\LuckyAio\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\samuel\Desktop\LuckyAio\LuckyAio\bin\Debug\EloBuddy.SDK.dll
+C:\Users\samuel\Desktop\LuckyAio\LuckyAio\bin\Debug\Newtonsoft.Json.dll
+C:\Users\samuel\Desktop\LuckyAio\LuckyAio\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\samuel\Desktop\LuckyAio\LuckyAio\bin\Debug\SharpDX.dll
+C:\Users\samuel\Desktop\LuckyAio\LuckyAio\bin\Debug\SharpDX.XInput.dll
+C:\Users\samuel\Desktop\LuckyAio\LuckyAio\obj\Debug\LuckyAio.csprojResolveAssemblyReference.cache
+C:\Users\samuel\Desktop\LuckyAio\LuckyAio\obj\Debug\LuckyAio.exe
+C:\Users\samuel\Desktop\LuckyAio\LuckyAio\obj\Debug\LuckyAio.pdb
