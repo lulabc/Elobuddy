@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using EloBuddy;
@@ -59,9 +59,24 @@ namespace LuckyAio.Champions
             MixedMenu.Add("useW", new CheckBox("Use W"));
             MixedMenu.Add("mana", new Slider("Min Mana %", 50, 0, 100));
             Emenu = Menu.AddSubMenu("Shield Settings", "Shield Settings");
-            Emenu.Add("autoE", new CheckBox("Auto E Targeted Spells"));
+            Emenu.Add("autoE", new CheckBox("Auto E"));
+            Emenu.AddGroupLabel("E On : ");
+            foreach (var enemy in ObjectManager.Get<AIHeroClient>().Where(enemy => enemy.IsEnemy))
+            {
+                for (var i = 0; i < 4; i++)
+                {
+                    var spell = enemy.Spellbook.Spells[i];
+                    if (spell.SData.TargettingType != SpellDataTargetType.Self && spell.SData.TargettingType != SpellDataTargetType.SelfAndUnit)
+                    {
+                        if (spell.SData.TargettingType == SpellDataTargetType.Unit)
+                        Emenu.Add("spell" + spell.SData.Name, new CheckBox(spell.Name,true));
+                        else
+                            Emenu.Add("spell" + spell.SData.Name, new CheckBox(spell.Name, false));
+                    }
+                }
+            }
             LaneClearMenu = Menu.AddSubMenu("Clear Settings", "Clear Settings");
-            LaneClearMenu.Add("useQ", new CheckBox("Use Q"));
+            LaneClearMenu.Add("useQ", new CheckBox("Use Q",false));
             LaneClearMenu.Add("useW", new CheckBox("Use W"));
             LaneClearMenu.Add("mana", new Slider("Min Mana %", 30, 0, 100));
         }
@@ -209,6 +224,8 @@ namespace LuckyAio.Champions
         {
             if (sender != null && args.Target != null && sender.Type == GameObjectType.AIHeroClient && args.Target.IsMe && sender.IsEnemy && UseE && E.IsReady())
             {
+                if (Emenu["spell" + args.SData.Name] != null && !getCheckBoxItem(Emenu, "spell" + args.SData.Name))
+                    return;
                 if (!args.SData.ConsideredAsAutoAttack)
                 {
                     if (!args.SData.Name.Contains("summoner") && !args.SData.Name.Contains("TormentedSoil"))
@@ -221,7 +238,46 @@ namespace LuckyAio.Champions
                     E.Cast();
                 }
             }
+            else if (CanHitSkillShot(ObjectManager.Player, args))
+            {
+                E.Cast();
+            }
         }
+        static bool CanHitSkillShot(Obj_AI_Base target, GameObjectProcessSpellCastEventArgs args)
+        {
+            if (args.Target == null && target.IsValidTarget(float.MaxValue))
+            {
+                int Collide = 0;
+                if (args.SData.LineMissileEndsAtTargetPoint)
+                {
+                    Collide = 0;
+                }
+                else
+                {
+                    Collide = 1;
+                }
+                var pred = Prediction.Position.PredictLinearMissile(target, args.SData.CastRange, (int)args.SData.CastRadius, (int)args.SData.CastTime, args.SData.MissileSpeed, Collide).CastPosition;
+                if (pred == null)
+                    return false;
+
+                if (args.SData.LineWidth > 0)
+                {
+                    var powCalc = Math.Pow(args.SData.LineWidth + target.BoundingRadius, 2);
+                    if (pred.To2D().Distance(args.End.To2D(), args.Start.To2D(), true, true) <= powCalc ||
+                        target.ServerPosition.To2D().Distance(args.End.To2D(), args.Start.To2D(), true, true) <= powCalc)
+                    {
+                        return true;
+                    }
+                }
+                else if (target.Distance(args.End) < 50 + target.BoundingRadius ||
+                         pred.Distance(args.End) < 50 + target.BoundingRadius)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         static void SetMana()
         {
             if ((Orbwalker.ActiveModesFlags.HasFlag(Orbwalker.ActiveModes.Combo) && !ManaManager) || ObjectManager.Player.HealthPercent < 20)
@@ -239,7 +295,7 @@ namespace LuckyAio.Champions
 
             if (!R.IsReady())
                 RMANA = QMANA - ObjectManager.Player.PARRegenRate * ObjectManager.Player.Spellbook.GetSpell(SpellSlot.Q).Cooldown ;
-            else
+            else if (R.IsLearned)
                 RMANA = ObjectManager.Player.Spellbook.GetSpell(SpellSlot.R).SData.Mana;
         }
     }
