@@ -240,6 +240,8 @@ namespace LuckyAio.Champions
             }
             else if (CanHitSkillShot(ObjectManager.Player, args))
             {
+                if (Emenu["spell" + args.SData.Name] != null && !getCheckBoxItem(Emenu, "spell" + args.SData.Name))
+                    return;
                 E.Cast();
             }
         }
