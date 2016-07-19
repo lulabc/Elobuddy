@@ -186,7 +186,7 @@ namespace LuckyAio.Champions
         }
         static void Clear()
         {
-            if (W.IsReady() && getCheckBoxItem(LaneClearMenu, "useW") && !Q.IsReady())
+            if (W.IsReady() && getCheckBoxItem(LaneClearMenu, "useW"))
             {
                 if (Minions.Any())
                 {
