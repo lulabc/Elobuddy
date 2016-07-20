@@ -260,12 +260,12 @@ namespace LuckyAio.Champions
                 }
                 var pred = Prediction.Position.PredictLinearMissile(target, args.SData.CastRange, (int)args.SData.CastRadius, (int)args.SData.CastTime, args.SData.MissileSpeed, Collide).CastPosition;
                 if (pred == null)
-                    return false;
 
+                    return false;
                 if (args.SData.LineWidth > 0)
                 {
                     var powCalc = Math.Pow(args.SData.LineWidth + target.BoundingRadius, 2);
-                    if (pred.To2D().Distance(args.End.To2D(), args.Start.To2D(), true, true) <= powCalc ||
+                    if (pred.To2D().Distance(args.End.To2D(), args.Start.To2D(), true, true) <= args.SData.LineWidth / 2 + target.BoundingRadius ||
                         target.ServerPosition.To2D().Distance(args.End.To2D(), args.Start.To2D(), true, true) <= powCalc)
                     {
                         return true;
