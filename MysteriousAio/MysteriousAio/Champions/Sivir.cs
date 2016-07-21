@@ -238,7 +238,7 @@ namespace LuckyAio.Champions
                     E.Cast();
                 }
             }
-            else if (CanHitSkillShot(ObjectManager.Player, args) && sender.IsEnemy && UseE && E.IsReady() && sender.Type == GameObjectType.AIHeroClient)
+            else if (CanHitSkillShot(ObjectManager.Player, args) && !sender.IsMe)
             {
                 if (Emenu["spell" + args.SData.Name] != null && !getCheckBoxItem(Emenu, "spell" + args.SData.Name))
                     return;
