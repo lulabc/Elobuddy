@@ -265,7 +265,7 @@ namespace LuckyAio.Champions
                 if (args.SData.LineWidth > 0)
                 {
                     var powCalc = Math.Pow(args.SData.LineWidth + target.BoundingRadius, 2);
-                    if (pred.To2D().Distance(args.End.To2D(), args.Start.To2D(), true, true) <= args.SData.LineWidth / 2 + target.BoundingRadius ||
+                    if (pred.To2D().Distance(args.End.To2D(), args.Start.To2D(), true, true) <= powCalc ||
                         target.ServerPosition.To2D().Distance(args.End.To2D(), args.Start.To2D(), true, true) <= powCalc)
                     {
                         return true;
