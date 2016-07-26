@@ -222,10 +222,10 @@ namespace LuckyAio.Champions
         }
         static void Obj_AI_Base_OnProcessSpellCast(Obj_AI_Base sender, GameObjectProcessSpellCastEventArgs args)
         {
+            if (Emenu["spell" + args.SData.Name] != null && !getCheckBoxItem(Emenu, "spell" + args.SData.Name))
+                return;
             if (sender != null && args.Target != null && sender.Type == GameObjectType.AIHeroClient && args.Target.IsMe && sender.IsEnemy && UseE && E.IsReady())
             {
-                if (Emenu["spell" + args.SData.Name] != null && !getCheckBoxItem(Emenu, "spell" + args.SData.Name))
-                    return;
                 if (!args.SData.ConsideredAsAutoAttack)
                 {
                     if (!args.SData.Name.Contains("summoner") && !args.SData.Name.Contains("TormentedSoil"))
@@ -238,10 +238,8 @@ namespace LuckyAio.Champions
                     E.Cast();
                 }
             }
-            else if (CanHitSkillShot(ObjectManager.Player, args) && !sender.IsMe)
+            else if (CanHitSkillShot(ObjectManager.Player, args) && !sender.IsMe && sender.Type == GameObjectType.AIHeroClient && E.IsReady())
             {
-                if (Emenu["spell" + args.SData.Name] != null && !getCheckBoxItem(Emenu, "spell" + args.SData.Name))
-                    return;
                 E.Cast();
             }
         }
