@@ -18,6 +18,10 @@ namespace LuckyAio
             {
                 Champions.Sivir.SivirLoading();
             }
+            if (Player.Instance.ChampionName == "Twitch")
+            {
+                Champions.Twitch.TwitchLoading();
+            }
             return;
         }
     }

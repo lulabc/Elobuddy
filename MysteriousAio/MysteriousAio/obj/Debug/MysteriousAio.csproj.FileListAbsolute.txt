@@ -12,5 +12,16 @@ C:\Users\samuel\Desktop\LuckyAio\LuckyAio\obj\Debug\MysteriousAio.csprojResolveA
 C:\Users\samuel\Desktop\LuckyAio\LuckyAio\obj\Debug\MysteriousAio.exe
 C:\Users\samuel\Desktop\LuckyAio\LuckyAio\obj\Debug\MysteriousAio.pdb
 C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\bin\Debug\MysteriousAio.exe.config
+C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\bin\Debug\MysteriousAio.exe
+C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\bin\Debug\MysteriousAio.pdb
+C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\bin\Debug\EloBuddy.dll
+C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\bin\Debug\EloBuddy.Sandbox.dll
+C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\bin\Debug\EloBuddy.SDK.dll
+C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\bin\Debug\Newtonsoft.Json.dll
+C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\bin\Debug\SharpDX.Direct3D9.dll
+C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\bin\Debug\SharpDX.dll
+C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\bin\Debug\SharpDX.XInput.dll
+C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\obj\Debug\MysteriousAio.csprojResolveAssemblyReference.cache
+C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\obj\Debug\MysteriousAio.csproj.MysteriousAio.exe.config
 C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\obj\Debug\MysteriousAio.exe
 C:\Users\samuel\Desktop\MysteriousAio\MysteriousAio\obj\Debug\MysteriousAio.pdb
