@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Collections.Generic;
 using EloBuddy;
@@ -256,7 +256,7 @@ namespace LuckyAio.Champions
                 {
                     Collide = 1;
                 }
-                var pred = Prediction.Position.PredictLinearMissile(target, args.SData.CastRange, (int)args.SData.CastRadius, (int)args.SData.CastTime, args.SData.MissileSpeed, Collide).CastPosition;
+                var pred = Prediction.Position.PredictLinearMissile(target, args.SData.CastRange, (int)args.SData.CastRadius, (int)args.SData.SpellCastTime, args.SData.MissileSpeed, Collide).CastPosition;
                 if (pred == null)
 
                     return false;
